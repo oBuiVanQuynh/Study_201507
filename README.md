@@ -24,13 +24,56 @@ Ruby Version | Grape | Rails::API
   + Nếu sử dụng `Bundler` thêm `gem "grape"` vào `Gemfile` và chạy: `$ bundle install`
  
 II. Grpe API
- 1. Cách sử dụng cơ bảndd
+ 1. Cách sử dụng cơ bản
   - `Grape APIs` là các ứng dụng `Rack` được tạo bởi lớp con `Grape::API`
-  - Ví dụ về 1 lớp về việc `Grape` định nghĩa 1 số chức năng của `dd`<br>
-    `class API::V1::TestsAPI < Grape::API`
-       `resources :tests do`
-         `get do`
-           `Test.all`
-         `end`
-       `end`
-     `end`
+  - Ví dụ về 1 lớp về việc `Grape` định nghĩa 1 số chức năng của `dd`
+   ```ruby
+   class API::V1::TestsAPI < Grape::API
+     version "v1", using: :header, vendor: "twitter"
+      format :json
+      prefix :api
+  
+      helpers do
+        def current_user
+        @current_user ||= User.authorize!(env)
+      end
+  
+      def authenticate!
+        error!("401 Unauthorized", 401) unless current_user
+        end
+      en
+      
+      resources :tests do
+        get do
+          Test.all
+        end
+      end
+    end
+   ```
+ 2. Mounting
+  a. Rack
+  - Các mẫu trên tạo ra một ứng dụng `rack` nên có thể được chạy từ `config.ru` với rackup:
+   ```ruby
+    ENV['RACK_ENV'] ||= :production
+
+    Bundler.require(:default, ENV['RACK_ENV']) if defined?(Bundler)
+    require 'bundler/setup'
+    
+    lib_path = File.expand_path('../lib', __FILE__)
+    $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(acklib_path)
+    
+    require 'app'
+    require 'api'
+    
+    run API::V1::TestsAPI.new
+   ```
+  b. Rails 
+   - Với vị trí file tại `lib/api`, thì các `module` phải được nối chính xác với các `subdirectory`.Ví dụ với `TestAPI`   file là `lib/api/v1/test_api.rb` thì tên của `class` là `API::V1::TestsAPI`
+   - Sửa `applicaton.rb`
+    ```ruby 
+     config.autoload_paths << Rails.root.join("lib")
+    ```
+   - Sửa `config/routes.rb`
+    ```ruby
+     mount API::V1::TestsAPI => "api"
+    ```
