@@ -22,4 +22,15 @@ Ruby Version | Grape | Rails::API
  - Cách cài đặt:
   + Grape là 1 gem nên có thể cài đặt nó như 1 gem thông thường: `$ gem install grape`
   + Nếu sử dụng `Bundler` thêm `gem "grape"` vào `Gemfile` và chạy: `$ bundle install`
-II. Cách sử dụng
+ 
+II. Grpe API
+ 1. Cách sử dụng cơ bảndd
+  - `Grape APIs` là các ứng dụng `Rack` được tạo bởi lớp con `Grape::API`
+  - Ví dụ về 1 lớp về việc `Grape` định nghĩa 1 số chức năng của `dd`<br>
+    `class API::V1::TestsAPI < Grape::API`
+       `resources :tests do`
+         `get do`
+           `Test.all`
+         `end`
+       `end`
+     `end`
