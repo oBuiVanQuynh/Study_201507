@@ -136,3 +136,27 @@ II. Grpe API
     ```
     Client connect đến version mong muốn thông qua `request paramete`: <br>
     `curl http://localhost:3000/api/v1/tests?v=v1`
+ 3. Parameters
+  - Parameter có thể được lấy thông qua `params` hash object. Bao gồm `GET, POST, PUT` parameters, và tất cả các tên    parameters được định nghĩa trong chuỗi `url`
+   ```ruby
+    get ":id" do
+      Test.find params[:id]
+    end
+   ```
+  - POSTs và PUTs được hỗ trợ rất tốt.
+   ```ruby
+    post do
+      Test.create!(content: params[:text])
+    end
+   ```
+   Request:
+    `curl -d '{"content": "characters"}' 'http://localhost:3000/api/v1/tests'`
+ 4. Parameter Validation and Coercion
+  - Grape có thể định nghĩa được validations và định dạng trong `params` block:
+   ```ruby
+    params do
+     requires :id, type: Integer
+     optional :content, type: String, regexp: /^[a-z]+$/
+    end
+   ```
+   
