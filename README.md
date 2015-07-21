@@ -78,3 +78,20 @@ II. Grpe API
     ```ruby
      mount API::V1::TestsAPI => "api"
     ```
+   - Với version `Rails 4.0+` và các ứng dụng sử dụng `model` của `ActiveRecord` bạn có thể sử dụng                      [hashie-forbidden_attributes link](https://github.com/Maxim-Filimonov/hashie-forbidden_attributes) đẻ tắt tính năng    bảo mật của `strong_params` của `model layer`, cho phép sử dụng các `params` riêng
+   ```ruby
+    # Gemfile
+    gem "hashie-forbidden_attributes"
+   ```
+  c. Modules
+   - Ta có thể `mount` nhiều `API` thành phần cùng nhau có thể là các phiên bản khác nhau
+    ```ruby
+    class API::V1 < Grape::API
+      version "v1", using: :path
+      desc "Returns the current API version, v1."
+      get do
+        {version: "v1"}
+      end
+      mount TestsAPI
+    end
+   ```
