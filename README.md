@@ -16,7 +16,7 @@ I. Giới thiệu GRAPE-API
 
 Ruby Version | Grape | Rails::API
 --- | --- | ---
-`ruby 2.1.2p95` | dd | `Time taken for tests:   1940.685 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Total transferred:      1115000000 bytes`<br/>`HTML transferred:       1069300000 bytes`<br/>`Requests per second:    51.53 [#/sec] (mean)`<br/>`Time per request:       19.407 [ms] (mean)`<br/>`Time per request:       19.407 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          561.07 [Kbytes/sec] received`
+`ruby 2.1.2p95` | `Time taken for tests:   1723.973 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Total transferred:      1104000000 bytes`<br/>`HTML transferred:       1069300000 bytes`<br/>`Requests per second:    58.01 [#/sec] (mean)`<br/>`Time per request:       17.240 [ms] (mean)`<br/>`Time per request:       17.240 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          625.37 [Kbytes/sec] received` | `Time taken for tests:   1940.685 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Total transferred:      1115000000 bytes`<br/>`HTML transferred:       1069300000 bytes`<br/>`Requests per second:    51.53 [#/sec] (mean)`<br/>`Time per request:       19.407 [ms] (mean)`<br/>`Time per request:       19.407 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          561.07 [Kbytes/sec] received`
 
  - Cách cài đặt:
   + Grape là 1 gem nên có thể cài đặt nó như 1 gem thông thường: `$ gem install grape`
