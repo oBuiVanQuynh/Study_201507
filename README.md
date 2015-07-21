@@ -16,9 +16,7 @@ I. Giới thiệu GRAPE-API
 
 Ruby Version | Grape | Rails::API
 --- | --- | ---
-`ruby 2.1.2p95` | dd | `Concurrency Level:      1`<br/>`Time taken for tests:   1819.450 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Total transferred:      1115000000 bytes`<br/>`HTML transferred:       1069300000 bytes`<br/>`Requests per second:    54.96 [#/sec] (mean)`<br/>`Time per request:       18.194 [ms] (mean)`<br>`Time per request:       18.194 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          598.46 [Kbytes/sec] received`
-
-
+`ruby 2.1.2p95` | dd | `Time taken for tests:   1940.685 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Total transferred:      1115000000 bytes`<br/>`HTML transferred:       1069300000 bytes`<br/>`Requests per second:    51.53 [#/sec] (mean)`<br/>`Time per request:       19.407 [ms] (mean)`<br/>`Time per request:       19.407 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          561.07 [Kbytes/sec] received`
 
  - Cách cài đặt:
   + Grape là 1 gem nên có thể cài đặt nó như 1 gem thông thường: `$ gem install grape`
@@ -115,9 +113,9 @@ II. Grpe API
     ```
     Client có thể connect đến `api` thông qua url: `http://192.168.1.252:3000/api/v1/tests`
    + Header
-    ```
+    ```ruby
      version "v1", using: :header, vendor: "api-test"
     ```
-    Client connect đến thông qua `HTTP Accept` head: 
+    Client connect đến thông qua `HTTP Accept` head:<br>
     `curl -H Accept:application/vnd.api-test-v1+json http://localhost:3000/api/tests`
   
