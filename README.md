@@ -122,5 +122,17 @@ II. Grpe API
     ```ruby
      version 'v1', using: :accept_version_header
     ```
-    Client connect đến thông qua version mong muốn `HTTP Accept-Version header`
+    Client connect đến version mong muốn thông qua `HTTP Accept-Version` header: <br>
     `curl -H "Accept-Version:v1" http://localhost:3000/api/v1/tests`
+   + Param
+   ```ruby
+    version 'v1', using: :param
+   ```
+    Client connect đến version mong muốn thông qua `request paramete`: <br>
+    `curl http://localhost:3000/api/v1/tests?apiver=v1`
+    Tên parameter mặc định là `apiver`, muốn đổi tên ta làm như sau:
+    ```ruby
+     version 'v1', using: :param, parameter: "v"
+    ```
+    Client connect đến version mong muốn thông qua `request paramete`: <br>
+    `curl http://localhost:3000/api/v1/tests?v=v1`
