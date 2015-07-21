@@ -158,5 +158,9 @@ II. Grpe API
      requires :id, type: Integer
      optional :content, type: String, regexp: /^[a-z]+$/
     end
+    put ":id" do
+     test = Test.find params[:id]
+     test.update content: params[:content]
+    end
    ```
    
