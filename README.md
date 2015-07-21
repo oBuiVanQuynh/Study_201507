@@ -16,7 +16,8 @@ I. Giới thiệu GRAPE-API
 
 Ruby Version | Grape | Rails::API
 --- | --- | ---
-`ruby 2.1.2p95` | dd | `Concurrency Level:      1`<br/>`Time taken for tests:   251.025 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Non-2xx responses:      100000`<br/>`Total transferred:      182900000 bytes`<br/>`HTML transferred:       156400000 bytes`<br/>`Requests per second:    398.37 [#/sec] (mean)`<br/>`Time per request:       2.510 [ms] (mean)`<br/>`Time per request:       2.510 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          711.54 [Kbytes/sec] received`
+`ruby 2.1.2p95` | dd | `Concurrency Level:      1`<br/>`Time taken for tests:   1819.450 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Total transferred:      1115000000 bytes`<br/>`HTML transferred:       1069300000 bytes`<br/>`Requests per second:    54.96 [#/sec] (mean)`<br/>`Time per request:       18.194 [ms] (mean)`<br>`Time per request:       18.194 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          598.46 [Kbytes/sec] received`
+
 
 
  - Cách cài đặt:
@@ -50,7 +51,7 @@ II. Grpe API
       end
     end
    ```
- 2. Mounting
+ 2. Mounting<br>
   a. Rack
   - Các mẫu trên tạo ra một ứng dụng `rack` nên có thể được chạy từ `config.ru` với rackup:
    ```ruby
