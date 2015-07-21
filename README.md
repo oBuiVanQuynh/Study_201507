@@ -14,5 +14,12 @@ I. Giới thiệu GRAPE-API
   + Có tốc độ xử lý cao hơn so với `rails-api`
  Một số kết quả so sánh giữa `grape-api` và `rails-api`
 
-Markdown | Less | Pretty
+Ruby Version | Grape | Rails::API
 --- | --- | ---
+`ruby 2.1.2p95` | dd | `Concurrency Level:      1`<br/>`Time taken for tests:   251.025 seconds`<br/>`Complete requests:      100000`<br/>`Failed requests:        0`<br/>`Write errors:           0`<br/>`Non-2xx responses:      100000`<br/>`Total transferred:      182900000 bytes`<br/>`HTML transferred:       156400000 bytes`<br/>`Requests per second:    398.37 [#/sec] (mean)`<br/>`Time per request:       2.510 [ms] (mean)`<br/>`Time per request:       2.510 [ms] (mean, across all concurrent requests)`<br/>`Transfer rate:          711.54 [Kbytes/sec] received`
+
+
+ - Cách cài đặt:
+  + Grape là 1 gem nên có thể cài đặt nó như 1 gem thông thường: `$ gem install grape`
+  + Nếu sử dụng `Bundler` thêm `gem "grape"` vào `Gemfile` và chạy: `$ bundle install`
+II. Cách sử dụng
