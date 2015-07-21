@@ -106,3 +106,18 @@ II. Grpe API
       mount API::V1
     end
    ```
+  => Việc này giúp chúng ta quản lý `version` của `api` trở nên linh hoạt hơn rất nhiều.
+ d. Versioning
+  - Có bốn cách để client có thể đến các API của bạn là: `:path, :header, :accept_version_header` và `:param`, mặc      định của `grape`là `:path`
+   + Path
+    ```ruby
+     version "v1", using: :path
+    ```
+    Client có thể connect đến `api` thông qua url: `http://192.168.1.252:3000/api/v1/tests`
+   + Header
+    ```
+     version "v1", using: :header, vendor: "api-test"
+    ```
+    Client connect đến thông qua `HTTP Accept` head: 
+    `curl -H Accept:application/vnd.api-test-v1+json http://localhost:3000/api/tests`
+  
