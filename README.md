@@ -165,3 +165,21 @@ II. Grpe API
    ```
   - Khi 1 kiểu đã được xác định là thì nó sẽ cưỡng chế tất cả đảm bảo đầu ra là đúng nếu kiểu của params không đúng     thì grape sẽ trả lỗi `params is invalid` và `http_status: 400`, params là `requires` khi thiếu 
   params có key như vậy grape sẽ lỗi `params is missing` và `http_status: 400`, params là `optional` có thể trống.
+  - Ta có thể set default value cho params
+   ```ruby
+    params do
+     optional :content, type: String, regexp: /^[a-z]+$/, default: "content"
+    end
+   ```
+  - Supported Parameter Types
+    * Integer
+    * Float
+    * BigDecimal
+    * Numeric
+    * Date
+    * DateTime
+    * Time
+    * Boolean
+    * String
+    * Symbol
+    * Rack::Multipart::UploadedFile
