@@ -117,5 +117,10 @@ II. Grpe API
      version "v1", using: :header, vendor: "api-test"
     ```
     Client connect đến thông qua `HTTP Accept` head:<br>
-    `curl -H Accept:application/vnd.api-test-v1+json http://localhost:3000/api/tests`
-  
+    `curl -H Accept:application/vnd.api-test-v1+json http://localhost:3000/api/v1/tests`
+   + Accept-Version Header
+    ```ruby
+     version 'v1', using: :accept_version_header
+    ```
+    Client connect đến thông qua version mong muốn `HTTP Accept-Version header`
+    `curl -H "Accept-Version:v1" http://localhost:3000/api/v1/tests`
