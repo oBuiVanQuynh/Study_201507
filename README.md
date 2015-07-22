@@ -190,8 +190,8 @@ II. Grpe API
    ... tham khảo thêm tại [Grape Built-in Validators](https://github.com/intridea/grape#built-in-validators)
  5. Validation Errors
   - `Grape` gom các lỗi và ngoại lệ của các kiểu, `Grape::Exceptions::ValidationErrors` trả ra các lỗi về phía client.   Nếu có lỗi hoặc ngoại lệ xảy ra thì `Grape` sẽ trả về phía client với `http_status: 400` và các thông báo lỗi. Các    lỗi thông qua các `parameters` thông qua `Grape::Exceptions::ValidationErrors#errors`
-  - Ta có thể Customize JSON API Errors
-   `# lib/api/error_formatter.rb`
+  - Ta có thể Customize JSON API Errors<br>
+   `# lib/error_formatter.rb`
    ```ruby
     module API
       module ErrorFormatter
@@ -199,5 +199,15 @@ II. Grpe API
           {response_type: "error", response: message}.to_json
         end
       end
+    end
+   ```
+  Ta nhúng vào trong api của mình
+   `# lib/api.rb`
+   ```ruby
+    class API < Grape::API
+      #...........
+      formatter :json, Grape::Formatter::ActiveModelSerializers
+      error_formatter :json, ErrorFormatter
+      #...........
     end
    ```
