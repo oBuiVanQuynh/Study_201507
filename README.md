@@ -76,7 +76,7 @@ II. Grpe API
     ```ruby
      mount API::V1::TestsAPI => "api"
     ```
-   - Với version `Rails 4.0+` và các ứng dụng sử dụng `model` của `ActiveRecord` bạn có thể sử dụng                      [hashie-forbidden_attributes link](https://github.com/Maxim-Filimonov/hashie-forbidden_attributes) đẻ tắt tính năng    bảo mật của `strong_params` của `model layer`, cho phép sử dụng các `params` riêng
+   - Với version `Rails 4.0+` và các ứng dụng sử dụng `model` của `ActiveRecord` bạn có thể sử dụng                      [hashie-forbidden_attributes](https://github.com/Maxim-Filimonov/hashie-forbidden_attributes) đẻ tắt tính năng    bảo mật của `strong_params` của `model layer`, cho phép sử dụng các `params` riêng
    ```ruby
     # Gemfile
     gem "hashie-forbidden_attributes"
@@ -184,8 +184,20 @@ II. Grpe API
     * Symbol
     * Rack::Multipart::UploadedFile
   - Grape cung cấp thêm đẻ xây dựng validator 
-   + allow_blank
-   + values
-   + regexp
-   ... tham khảo thêm tại [Grape Built-in Validators link](https://github.com/intridea/grape#built-in-validators)
- 
+    * allow_blank
+    * values
+    * regexp
+   ... tham khảo thêm tại [Grape Built-in Validators](https://github.com/intridea/grape#built-in-validators)
+ 5. Validation Errors
+  - `Grape` gom các lỗi và ngoại lệ của các kiểu, `Grape::Exceptions::ValidationErrors` trả ra các lỗi về phía client.   Nếu có lỗi hoặc ngoại lệ xảy ra thì `Grape` sẽ trả về phía client với `http_status: 400` và các thông báo lỗi. Các    lỗi thông qua các `parameters` thông qua `Grape::Exceptions::ValidationErrors#errors`
+  - Ta có thể Customize JSON API Errors
+   `# lib/api/error_formatter.rb`
+   ```ruby
+    module API
+      module ErrorFormatter
+        def self.call message, backtrace, options, env
+          {response_type: "error", response: message}.to_json
+        end
+      end
+    end
+   ```
