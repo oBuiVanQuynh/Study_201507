@@ -258,8 +258,8 @@ II. Grpe API
     * `validations`
     * `after_validation`
     * `the API call`
-    * `after`
- <br/>ví dụ: 
+    * `after`<br>
+  ví dụ: 
   ```ruby
    class API::V1::UsersAPI < Grape::API
      resources :users do
@@ -269,3 +269,30 @@ II. Grpe API
      #......
    end
   ```
+ 8. Authentication
+  - Thêm xác thực vào `API::V1::UsersAPI` để xác thực trong `UsersAPI`
+   ```ruby
+    class API::V1::UsersAPI < Grape::API
+      http_basic do |email, password|
+        user = User.find_by_email email
+        user && user.valid_password?(password)
+      end
+    end
+   ```
+  - Ta cũng có thể sử dụng `before_block` để xác thực trước khi làm gì đó:
+   ```ruby
+    before do
+      authenticate!
+    end
+    
+    helpers do
+     def authenticate!
+       error!('Unauthorized', 401) unless current_user
+     end
+    end
+   ```
+ 9. Writing Tests with Rails
+  - `API` của ta viết tại `lib/api/v1/*` ta cũng có thể match layout của nó trong spec như `spec/lib/api/v1/*` ta       config trong `# spec/rails_helper.rb`
+   ```ruby
+    config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/lib\/api/
+   ```
