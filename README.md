@@ -212,7 +212,45 @@ II. Grpe API
     end
    ```
  6. Helpers
-  - 
+  - Ta có thể định nghĩa `helper` trong `block` hoặc trong `module`
+   ```ruby
+    helpers do
+     def authenticate!
+       error!('Unauthorized', 401) unless current_user
+     end
+ 
+     def current_user
+       token = AuthenticationToken.find_by access_token: params[:access_token]
+       if token && !token.token_expires?
+         @current_user = token.user
+       else
+         false
+       end
+     end
+    end
+   ```
+   hoặc 
+   ```ruby
+    module UsersHelpers
+      def full_name user
+        "#{user.fist_name} #{user.last_name} "
+      end
+    end
+    class API::V1::UsersAPI < Grape::API
+      resources :users do
+        before do
+          authenticate!
+        end
+        
+        helpers UsersHelpers
+        
+        get ":id" do
+          user = User.find params[:id] 
+          full_name user
+        end
+      end
+    end
+   ```
  7. Before and After
   - `Before` and `after` callbacks được gọi theo thứ tự sau
     * `before`
@@ -221,3 +259,13 @@ II. Grpe API
     * `after_validation`
     * `the API call`
     * `after`
+  ví dụ: 
+  ```ruby
+   class API::V1::UsersAPI < Grape::API
+     resources :users do
+       before do
+         authenticate!
+       end
+     #......
+   end
+  ```
