@@ -180,6 +180,12 @@ II. Grpe API
     * DateTime
     * Time
     * Boolean
-    * String
+    * Stringalidatorsalidators
     * Symbol
     * Rack::Multipart::UploadedFile
+  - Grape cung cấp thêm đẻ xây dựng validator 
+   + allow_blank
+   + values
+   + regexp
+   ... tham khảo thêm tại [Grape Built-in Validators link](https://github.com/intridea/grape#built-in-validators)
+ 
