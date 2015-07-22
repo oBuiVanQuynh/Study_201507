@@ -322,4 +322,4 @@ II. Grpe API
    ```
 
 III. Lời kết
- - `Grape API` là 1 trong số những công cụ đơn giản để viết `api`, nó mang lại hiệu qủa cao nhờ cách thức viết đơn     gỉản và hiệu suất cao.
+ - `Grape API` là 1 trong số những công cụ đơn giản để viết `api`, nó mang lại hiệu qủa cao nhờ cách thức viết đơn     gỉan và hiệu suất cao.
