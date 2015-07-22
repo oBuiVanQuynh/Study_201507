@@ -213,9 +213,9 @@ II. Grpe API
    ```
  6. Before and After
   - `Before` and `after` callbacks được gọi theo thứ tự sau
-   * before
-   * before_validation
-   * validations
-   * after_validation
-   * the API call
-   * after
+    * `before`
+    * `before_validation`
+    * `validations`
+    * `after_validation`
+    * `the API call`
+    * `after`
