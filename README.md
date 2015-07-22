@@ -259,7 +259,7 @@ II. Grpe API
     * `after_validation`
     * `the API call`
     * `after`
-  ví dụ: 
+ <br/>ví dụ: 
   ```ruby
    class API::V1::UsersAPI < Grape::API
      resources :users do
