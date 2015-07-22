@@ -296,3 +296,27 @@ II. Grpe API
    ```ruby
     config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/lib\/api/
    ```
+  - rspec
+   ```ruby
+    context "Get user images" do
+      let(:params) do
+        sample_json["2"]["request"].merge(access_token: authentication_token.access_token)
+      end
+      let(:data){JSON.parse(ActiveModel::ArraySerializer.new(user.last_messages.order(updated_at: :desc)).to_json)}
+      let(:response_data) do
+        sample_json["2"]["response"].merge("chat_list" => data)
+      end
+      (FactoryGirl.create_list :user, 10).each do |u|
+        before(:each) do
+          FactoryGirl.create_list :text_message, 5, from_user_id: user.id, to_user_id: u.id
+          FactoryGirl.create_list :text_message, 5, from_user_id: u.id, to_user_id: user.id
+          FactoryGirl.create :user_location, user_id: u.id
+        end
+      end
+      it "should return http_code 200" do
+        get sample_json["url"], params
+        expect(response.status).to eq(sample_json["2"]["response"]["meta"]["code"])
+        expect(json_data["chat_list"]).to eq (response_data)["chat_list"]
+      end
+    end
+   ```
