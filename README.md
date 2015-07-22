@@ -211,7 +211,9 @@ II. Grpe API
       #...........
     end
    ```
- 6. Before and After
+ 6. Helpers
+  - 
+ 7. Before and After
   - `Before` and `after` callbacks được gọi theo thứ tự sau
     * `before`
     * `before_validation`
