@@ -66,7 +66,7 @@ II. Grpe API
     run API::V1::TestsAPI.new
    ```
   b. Rails 
-   - Với vị trí file tại `lib/api`, thì các `module` phải được nối chính xác với các `subdirectory`.Ví dụ với `TestAPI`   file là `lib/api/v1/test_api.rb` thì tên của `class` là `API::V1::TestsAPI`
+   - Với vị trí file tại `# lib/api`, thì các `module` phải được nối chính xác với các `subdirectory`.Ví dụ với `TestAPI`   file là `# lib/api/v1/test_api.rb` thì tên của `class` là `API::V1::TestsAPI`
    - Sửa `applicaton.rb`
     ```ruby 
      config.autoload_paths << Rails.root.join("lib")
