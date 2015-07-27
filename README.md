@@ -153,15 +153,15 @@ II. Grpe API
    ```ruby
     version 'v1', using: :param
    ```
-    Client connect đến version mong muốn thông qua `request paramete`: <br>
+    Client connect đến version mong muốn thông qua `request parameter`: <br>
     `curl http://localhost:3000/api/v1/tests?apiver=v1`
     Tên parameter mặc định là `apiver`, muốn đổi tên ta làm như sau:
     ```ruby
      version 'v1', using: :param, parameter: "v"
     ```
-    Client connect đến version mong muốn thông qua `request paramete`: <br>
+    Client connect đến version mong muốn thông qua `request parameter`: <br>
     `curl http://localhost:3000/api/v1/tests?v=v1`
- 
+  - Thông qua các `request` mà mình sử dụng `curl` thấy được sự khác nhau về cách định nghĩa `version` của `grape-api`
  e. API Formats
   - API của bạn có thể khai báo mà nội `content-type` để hỗ trợ bằng cách sử dụng `content_type`. Những loại `content-types` hỗ trợ `XML`, `JSON`, `BINARY`, và `TXT` .
    ```ruby
