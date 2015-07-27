@@ -362,3 +362,7 @@ II. Grpe API
 
 III. Lời kết
  - `Grape API` là 1 trong số những công cụ đơn giản để viết `api`, nó mang lại hiệu qủa cao nhờ cách thức viết đơn     gỉan và hiệu suất cao.
+ - Tham khảo thêm tại:
+   + [https://github.com/intridea/grape](https://github.com/intridea/grape)
+   + [http://intridea.github.io/grape/](http://intridea.github.io/grape/)
+   + [http://blog.backupify.com/2013/09/30/a-framework-comparison-of-grape-vs-railsapi-part-1-performance/](http://blog.backupify.com/2013/09/30/a-framework-comparison-of-grape-vs-railsapi-part-1-performance/)
