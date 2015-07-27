@@ -115,7 +115,7 @@ II. Grpe API
       mount TestsAPI
     end
    ```
-   - `$ lib/api.rb`
+   - `# lib/api.rb`
     ```ruby 
      class API < Grape::API
        format :json
