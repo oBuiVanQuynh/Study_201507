@@ -28,10 +28,9 @@ II. Grpe API
   - Ví dụ về 1 lớp về việc `Grape` định nghĩa 1 số chức năng của `dd`
    ```ruby
    class API::V1::TestsAPI < Grape::API
-      version "v1", using: :header, vendor: "twitter"
+      version "v1", using: :header
       format :json
-      prefix :api
-  
+      
       helpers do
         def current_user
         @current_user ||= User.authorize!(env)
@@ -104,7 +103,33 @@ II. Grpe API
       mount API::V1
     end
    ```
+  - Thay vì sử dụng `mount on a path` ta có thể sử dụng `prefix` để đơn giản hơn:
+   ```ruby
+    class API::V2 < Grape::API
+      mount TestsAPI => "/v2"
+    end
+   ```
+   ```ruby
+    class API::V2 < Grape::API
+      prefix: "v2"
+      mount TestsAPI
+    end
+   ```
+   - `$ lib/api.rb`
+    ```ruby 
+     class API < Grape::API
+       format :json
+       helpers do
+         def render_api_error!(message, status)
+           error!({message: message}, status)
+         end
+       end
+       mount API::V1
+       mount API::V2
+     end
+    ```
   => Việc này giúp chúng ta quản lý `version` của `api` trở nên linh hoạt hơn rất nhiều.
+  
  d. Versioning
   - Có bốn cách để client có thể đến các API của bạn là: `:path, :header, :accept_version_header` và `:param`, mặc      định của `grape`là `:path`
    + Path
@@ -136,6 +161,20 @@ II. Grpe API
     ```
     Client connect đến version mong muốn thông qua `request paramete`: <br>
     `curl http://localhost:3000/api/v1/tests?v=v1`
+ 
+ e. API Formats
+  - API của bạn có thể khai báo mà nội `content-type` để hỗ trợ bằng cách sử dụng `content_type`. Những loại `content-types` hỗ trợ `XML`, `JSON`, `BINARY`, và `TXT` .
+   ```ruby
+   content_type :xml, 'application/xml'
+   content_type :json, 'application/json'
+   content_type :binary, 'application/octet-stream'
+   content_type :txt, 'text/plain'
+   ```
+  - Nếu như `respond` là 1 loại định dạng thì ta có thể sử dụng với `format`
+   ```ruby
+    format :json
+   ```
+  - Tham khảo thêm tại [API Formats](https://github.com/intridea/grape#api-formats)
  3. Parameters
   - Parameter có thể được lấy thông qua `params` hash object. Bao gồm `GET, POST, PUT` parameters, và tất cả các tên    parameters được định nghĩa trong chuỗi `url`
    ```ruby
