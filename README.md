@@ -331,7 +331,7 @@ II. Grpe API
     end
    ```
  9. Writing Tests with Rails
-  - `API` của ta viết tại `lib/api/v1/*` ta cũng có thể match layout của nó trong spec như `spec/lib/api/v1/*` ta       config trong `# spec/rails_helper.rb`
+  - `API` của ta viết tại `# lib/api/v1/*` ta cũng có thể match layout của nó trong spec như `# spec/lib/api/v1/*` ta       config trong `# spec/rails_helper.rb`
    ```ruby
     config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/lib\/api/
    ```
